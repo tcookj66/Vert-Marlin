@@ -657,4 +657,11 @@ void _lcd_ubl_mesh_wizard() {
   queue.inject(ubl_lcd_gcode);
 }
 
+void _lcd_mesh_wizard() {
+  START_MENU();
+    BACK_ITEM(MSG_UBL_MESH_WIZARD);
+    ACTION_ITEM(MSG_UBL_BUILD_CUSTOM_MESH, _lcd_ubl_mesh_wizard);
+  END_MENU();
+}
+
 #endif // HAS_LCD_MENU && AUTO_BED_LEVELING_UBL

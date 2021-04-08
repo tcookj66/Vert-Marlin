@@ -184,6 +184,16 @@ void lcd_mixer_mix_edit() {
   #endif
 }
 
+  void _load_mix_presets () {
+  char mix_lcd_gcode[128];
+  #if MIXING_STEPPERS == 2 //load vtool presets for 2 steppers
+     sprintf_P(ubl_lcd_gcode, (PSTR("M163 S0 P0\nM163 S1 P1\nM164 S1\nM163 S0 P0.50\nM163 S1 P0.50\nM164 S2\nM163 S0 P0.75\nM163 S1 P0.25\nM164 S3\nM163 S0 P0.25\nM163 S1 P0.75\nM164 S4\nM163 S0 P0.33\nM163 S1 P0.67\nM164 S5\nM163 S0 P0.67\nM163 S1 P0.33\nM164 S6\nM163 S0 P0.60\nM163 S1 P0.40\nM164 S7\nM163 S0 P1\nM163 S1 P0\nM164 S0")));
+  #elif MIXING_STEPPERS == 3 //load vtool presets for 3 steppers
+      sprintf_P(mix_lcd_gcode, (PSTR("M163 S0 P0\nM163 S1 P1\nM163 S2 P0\nM164 S1\nM163 S0 P0\nM163 S1 P0\nM163 S2 P1\nM164 S2\nM163 S0 P0.33\nM163 S1 P0.33\nM163 S2 P0.34\nM164 S3\nM163 S0 P0.25\nM163 S1 P0.75\nM163 S2 P0\nM164 S4\nM163 S0 P0\nM163 S1 P0.75\nM163 S2 P0.25\nM164 S5\nM163 S0 P0\nM163 S1 P0.50\nM163 S2 P0.50\nM164 S6\nM163 S0 P0.50\nM163 S1 P0.50\nM163 S2 P0\nM164 S7\nM163 S0 P1\nM163 S1 P0\nM163 S2 P0\nM164 S0")));
+  #endif
+  queue.inject(mix_lcd_gcode);
+  }
+
 #if HAS_DUAL_MIXING
 
   //
@@ -259,6 +269,8 @@ void menu_mixer() {
     nullptr,
     GET_TEXT(MSG_RESET_VTOOLS), (const char *)nullptr, PSTR("?")
   );
+
+  ACTION_ITEM(MSG_LOAD_MIX_PRESETS, _load_mix_presets);
 
   #if ENABLED(GRADIENT_MIX)
   {

@@ -600,6 +600,7 @@ namespace Language_en {
   PROGMEM Language_Str MSG_MIX                             = _UxGT("Mix");
   PROGMEM Language_Str MSG_MIX_COMPONENT_N                 = _UxGT("Component =");
   PROGMEM Language_Str MSG_MIXER                           = _UxGT("Mixer");
+  PROGMEM Language_Str MSG_LOAD_MIX_PRESETS                = _UxGT("Load Mix Presets");
   PROGMEM Language_Str MSG_GRADIENT                        = _UxGT("Gradient");
   PROGMEM Language_Str MSG_FULL_GRADIENT                   = _UxGT("Full Gradient");
   PROGMEM Language_Str MSG_TOGGLE_MIX                      = _UxGT("Toggle Mix");

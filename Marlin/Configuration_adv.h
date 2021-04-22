@@ -1181,7 +1181,7 @@
   #define TURBO_BACK_MENU_ITEM
 
   // Add a mute option to the LCD menu
-  #define SOUND_MENU_ITEM
+  //#define SOUND_MENU_ITEM
 
   /**
    * LED Control Menu
@@ -1974,7 +1974,7 @@
 //
 // G60/G61 Position Save and Return
 //
-#define SAVED_POSITIONS 2         // Each saved position slot costs 12 bytes
+//#define SAVED_POSITIONS 2         // Each saved position slot costs 12 bytes
 
 //
 // G2/G3 Arc Support

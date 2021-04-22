@@ -603,6 +603,9 @@ void _menu_ubl_tools() {
 
 #endif
 
+/**
+ * UBL Mesh Wizard - One-click mesh creation with or without a probe
+ */
 void _lcd_ubl_mesh_wizard() {
   char ubl_lcd_gcode[32];
   #if HAS_HEATED_BED
@@ -614,9 +617,6 @@ void _lcd_ubl_mesh_wizard() {
   #endif  
   }
 
-/**
- * UBL Mesh Wizard - One-click mesh creation with or without a probe
- */
 void _menu_ubl_mesh_wizard() {
   START_MENU();
   BACK_ITEM(MSG_UBL_LEVEL_BED);

@@ -312,12 +312,7 @@ void GcodeSuite::M1004() {
 
   if (parser.seen('S')) { 
   static int16_t slot_select = 0;
-        
-  if (!slot_select){
-     slot_select = 0;
-  if (slot_select)
-     slot_select = parser.seenval('S');   
-  }
+  slot_select = parser.seenval('S');   
 
   char ubl_lcd_gcode[16];
     sprintf_P(ubl_lcd_gcode, PSTR("G29 Si%"), slot_select);

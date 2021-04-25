@@ -308,11 +308,17 @@ void GcodeSuite::M1004() {
     process_subcommands_now_P(PSTR ("G28"));
     process_subcommands_now_P(PSTR (ALIGN_GCODE));
     process_subcommands_now_P(PSTR (PROBE_GCODE));
-    process_subcommands_now_P(PSTR ("G29P3\nG29P3"));
+    process_subcommands_now_P(PSTR ("G29P3\nG29P3")); 
 
   if (parser.seen('S')) { 
   static int16_t slot_select = 0;
-  slot_select = parser.seenval('S');      
+        
+  if (!slot_select){
+     slot_select = 0;
+  if (slot_select)
+     slot_select = parser.seenval('S');   
+  }
+
   char ubl_lcd_gcode[16];
     sprintf_P(ubl_lcd_gcode, PSTR("G29 Si%"), slot_select);
     queue.inject(ubl_lcd_gcode);    

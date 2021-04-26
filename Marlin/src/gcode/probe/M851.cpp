@@ -55,10 +55,10 @@ void GcodeSuite::M851() {
   if (parser.seenval('X')) {
     const float x = parser.value_float();
     #if HAS_PROBE_XY_OFFSET
-      if (WITHIN(x, -(X_BED_SIZE), X_BED_SIZE))
+      if (WITHIN(x, -(X_MAX_POS), X_MAX_POS))
         offs.x = x;
       else {
-        SERIAL_ECHOLNPAIR("?X out of range (-", X_BED_SIZE, " to ", X_BED_SIZE, ")");
+        SERIAL_ECHOLNPAIR("?X out of range (-", X_MAX_POS, " to ", X_MAX_POS, ")");
         ok = false;
       }
     #else
@@ -69,10 +69,10 @@ void GcodeSuite::M851() {
   if (parser.seenval('Y')) {
     const float y = parser.value_float();
     #if HAS_PROBE_XY_OFFSET
-      if (WITHIN(y, -(Y_BED_SIZE), Y_BED_SIZE))
+      if (WITHIN(y, -(Y_MAX_POS), Y_MAX_POS))
         offs.y = y;
       else {
-        SERIAL_ECHOLNPAIR("?Y out of range (-", Y_BED_SIZE, " to ", Y_BED_SIZE, ")");
+        SERIAL_ECHOLNPAIR("?Y out of range (-", Y_MAX_POS, " to ", Y_MAX_POS, ")");
         ok = false;
       }
     #else

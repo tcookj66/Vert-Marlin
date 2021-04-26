@@ -68,8 +68,8 @@ void NextionTFT::Startup() {
   SEND_VALasTXT("tmppage.printer", MACHINE_NAME);
   SEND_VALasTXT("tmppage.author", STRING_CONFIG_H_AUTHOR);
   SEND_VALasTXT("tmppage.released", STRING_DISTRIBUTION_DATE);
-  SEND_VALasTXT("tmppage.bedx", X_BED_SIZE);
-  SEND_VALasTXT("tmppage.bedy", Y_BED_SIZE);
+  SEND_VALasTXT("tmppage.bedx", X_MAX_POS);
+  SEND_VALasTXT("tmppage.bedy", Y_MAX_POS);
   SEND_VALasTXT("tmppage.bedz", Z_MAX_POS);
 
   DEBUG_ECHOLNPAIR("Nextion Debug Level ", NEXDEBUGLEVEL);
@@ -228,8 +228,8 @@ void NextionTFT::PanelInfo(uint8_t req) {
       SEND_VALasTXT("tmppage.printer", MACHINE_NAME);
       SEND_VALasTXT("tmppage.author", STRING_CONFIG_H_AUTHOR);
       SEND_VALasTXT("tmppage.released", STRING_DISTRIBUTION_DATE);
-      SEND_VALasTXT("tmppage.bedx", X_BED_SIZE);
-      SEND_VALasTXT("tmppage.bedy", Y_BED_SIZE);
+      SEND_VALasTXT("tmppage.bedx", X_MAX_POS);
+      SEND_VALasTXT("tmppage.bedy", Y_MAX_POS);
       SEND_VALasTXT("tmppage.bedz", Z_MAX_POS);
       SEND_TEMP("tmppage.t0", ui8tostr3rj(getActualTemp_celsius(E0)), " / ", ui8tostr3rj(getTargetTemp_celsius(E0)));
       SEND_TEMP("tmppage.t1", ui8tostr3rj(getActualTemp_celsius(E1)), " / ", ui8tostr3rj(getTargetTemp_celsius(E1)));

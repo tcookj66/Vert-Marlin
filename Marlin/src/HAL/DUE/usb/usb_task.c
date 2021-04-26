@@ -167,8 +167,8 @@ static USB_MicrosoftCompatibleDescriptor microsoft_compatible_id_descriptor = {
 #define MS3DPRINT_CONFIG      u"MS3DPrintConfig"
 #define MS3DPRINT_CONFIG_DATA \
   u"Base=SD\0"\
-  u"Job3DOutputAreaWidth=" xstr(X_BED_SIZE) "000\0"\
-  u"Job3DOutputAreaDepth=" xstr(Y_BED_SIZE) "000\0"\
+  u"Job3DOutputAreaWidth=" xstr(X_MAX_POS) "000\0"\
+  u"Job3DOutputAreaDepth=" xstr(Y_MAX_POS) "000\0"\
   u"Job3DOutputAreaHeight=" xstr(Z_MAX_POS) "000\0"\
   u"filamentdiameter=1750\0"
 

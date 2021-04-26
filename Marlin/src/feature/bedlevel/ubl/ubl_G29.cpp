@@ -462,8 +462,8 @@ void unified_bed_leveling::G29() {
               #if IS_KINEMATIC
                 X_HOME_POS, Y_HOME_POS
               #else
-                probe.offset_xy.x > 0 ? X_MAX_POS : 0,
-                probe.offset_xy.y < 0 ? Y_MAX_POS : 0
+                probe.offset_xy.x > 0 ? X_BED_SIZE : 0,
+                probe.offset_xy.y < 0 ? Y_BED_SIZE : 0
               #endif
             );
           }

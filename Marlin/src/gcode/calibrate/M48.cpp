@@ -158,7 +158,7 @@ void GcodeSuite::M48() {
             int(0.1250000000 * (DELTA_PRINTABLE_RADIUS)),
             int(0.3333333333 * (DELTA_PRINTABLE_RADIUS))
           #else
-            int(5), int(0.125 * _MIN(X_MAX_POS, Y_MAX_POS))
+            int(5), int(0.125 * _MIN(X_BED_SIZE, Y_BED_SIZE))
           #endif
         );
         if (verbose_level > 3) {

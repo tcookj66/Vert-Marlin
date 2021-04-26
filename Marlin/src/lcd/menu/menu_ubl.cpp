@@ -607,28 +607,34 @@ void _menu_ubl_tools() {
  * UBL Mesh Wizard - One-click mesh creation with or without a probe
  */
 void _lcd_ubl_mesh_wizard() {
-  char ubl_lcd_gcode[16];
-  #if HAS_HEATED_BED
-    sprintf_P(ubl_lcd_gcode, PSTR("M1004 B%i H%i"), custom_bed_temp, custom_hotend_temp);
+  char ubl_lcd_gcode[64];
+  #if HAS_HEATED_BED && HAS_HOTEND
+    sprintf_P(ubl_lcd_gcode, PSTR("M1004B%iH%iS%i"), custom_bed_temp, custom_hotend_temp, ubl_storage_slot);
     queue.inject(ubl_lcd_gcode);  
+  #elif HAS_HOTEND
+    sprintf_P(ubl_lcd_gcode, PSTR("M1004H%iS%i"), custom_hotend_temp, ubl_storage_slot);
+    queue.inject(ubl_lcd_gcode); 
   #else
-    sprintf_P(ubl_lcd_gcode, PSTR("M1004"));
-    queue.inject(ubl_lcd_gcode);  
+    sprintf_P(ubl_lcd_gcode, PSTR("M1004S%i"), ubl_storage_slot);
+    queue.inject(ubl_lcd_gcode);   
   #endif  
   }
 
 void _menu_ubl_mesh_wizard() {
+  int16_t total_slots = settings.calc_num_meshes();
   START_MENU();
   BACK_ITEM(MSG_UBL_LEVEL_BED);
-
+  
   #if HAS_HOTEND
-    EDIT_ITEM(int3, MSG_UBL_HOTEND_TEMP_CUSTOM, &custom_hotend_temp, EXTRUDE_MINTEMP, thermalManager.hotend_max_target(0));
+    EDIT_ITEM(int3, MSG_UBL_HOTEND_TEMP_CUSTOM, &custom_hotend_temp, 20, thermalManager.hotend_max_target(0));
   #endif
 
   #if HAS_HEATED_BED
-    EDIT_ITEM(int3, MSG_UBL_BED_TEMP_CUSTOM, &custom_bed_temp, BED_MINTEMP, BED_MAX_TARGET);
+    EDIT_ITEM(int3, MSG_UBL_BED_TEMP_CUSTOM, &custom_bed_temp, 20, BED_MAX_TARGET);
   #endif
   
+  EDIT_ITEM(int3, MSG_UBL_STORAGE_SLOT, &ubl_storage_slot, 0, total_slots);
+
   ACTION_ITEM(MSG_UBL_MESH_WIZARD, _lcd_ubl_mesh_wizard);
   
   #if ENABLED(G26_MESH_VALIDATION)

@@ -606,7 +606,6 @@ void _menu_ubl_tools() {
 /**
  * UBL Mesh Wizard - One-click mesh creation with or without a probe
  */
-#if ENABLED(UBL_MESH_WIZARD)
 void _lcd_ubl_mesh_wizard() {
   char ubl_lcd_gcode[64];
   #if HAS_HEATED_BED && HAS_HOTEND
@@ -620,6 +619,7 @@ void _lcd_ubl_mesh_wizard() {
     queue.inject(ubl_lcd_gcode);   
   #endif  
   }
+
 
 void _menu_ubl_mesh_wizard() {
   int16_t total_slots = settings.calc_num_meshes();

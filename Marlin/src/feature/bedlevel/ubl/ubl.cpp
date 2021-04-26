@@ -303,6 +303,7 @@ void GcodeSuite::M1004() {
     thermalManager.setTargetBed(temp);
     thermalManager.wait_for_bed(no_wait_for_cooling_bed);
   }
+  #endif
 
     process_subcommands_now_P(PSTR ("G28"));
     process_subcommands_now_P(PSTR (ALIGN_GCODE));
@@ -311,8 +312,9 @@ void GcodeSuite::M1004() {
 
   if (parser.seen('S')) { 
   static int16_t slot_select = 0;  
-  slot_select = parser.seenval('S');  
-  char ubl_lcd_gcode[32];
+  slot_select = parser.seenval('S'); 
+   
+  char umw_gcode[32];
     sprintf_P(umw_gcode, PSTR("G29S%i"), slot_select);
     queue.inject(umw_gcode);    
   }
@@ -321,7 +323,6 @@ void GcodeSuite::M1004() {
     process_subcommands_now_P(PSTR ("M140S0\nM104S0"));
     process_subcommands_now_P(PSTR ("M500"));
  }
-  #endif
 
 #endif // AUTO_BED_LEVELING_UBL
 

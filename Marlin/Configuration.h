@@ -21,6 +21,8 @@
  */
 #pragma once
 
+#define CONFIG_EXAMPLES_DIR "Geeetech/A10T"
+
 /**
  * Configuration.h
  *
@@ -134,7 +136,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_GT2560_V3
+  #define MOTHERBOARD BOARD_GT2560_V4
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
@@ -294,7 +296,7 @@
  */
 #define MIXING_EXTRUDER
 #if ENABLED(MIXING_EXTRUDER)
-  #define MIXING_STEPPERS 2        // Number of steppers in your mixing extruder
+  #define MIXING_STEPPERS 3        // Number of steppers in your mixing extruder
   #define MIXING_VIRTUAL_TOOLS 16  // Use the Virtual Tool method with M163 and M164
   #define DIRECT_MIXING_IN_G1    // Allow ABCDHI mix factors in G1 movement commands
   #define GRADIENT_MIX           // Support for gradient mixing with M166 and LCD
@@ -2060,7 +2062,7 @@
 //
 // Note: Usually sold with a white PCB.
 //
-#define REPRAP_DISCOUNT_SMART_CONTROLLER
+//#define REPRAP_DISCOUNT_SMART_CONTROLLER
 
 //
 // GT2560 (YHCB2004) LCD Display
@@ -2068,7 +2070,7 @@
 // Requires Testato, Koepel softwarewire library and
 // Andriy Golovnya's LiquidCrystal_AIP31068 library.
 //
-//#define YHCB2004
+#define YHCB2004
 
 //
 // Original RADDS LCD Display+Encoder+SDCardReader

@@ -144,7 +144,7 @@
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
-//#define MACHINE_UUID "00000000-0000-0000-0000-000000000000"
+#define MACHINE_UUID "00000000-1337-1337-1337-000000000000"
 
 // @section extruder
 
@@ -461,16 +461,16 @@
 
 // Below this temperature the heater will be switched off
 // because it probably indicates a broken thermistor wire.
-#define HEATER_0_MINTEMP   5
-#define HEATER_1_MINTEMP   5
-#define HEATER_2_MINTEMP   5
-#define HEATER_3_MINTEMP   5
-#define HEATER_4_MINTEMP   5
-#define HEATER_5_MINTEMP   5
-#define HEATER_6_MINTEMP   5
-#define HEATER_7_MINTEMP   5
-#define BED_MINTEMP        5
-#define CHAMBER_MINTEMP    5
+#define HEATER_0_MINTEMP   0
+#define HEATER_1_MINTEMP   0
+#define HEATER_2_MINTEMP   0
+#define HEATER_3_MINTEMP   0
+#define HEATER_4_MINTEMP   0
+#define HEATER_5_MINTEMP   0
+#define HEATER_6_MINTEMP   0
+#define HEATER_7_MINTEMP   0
+#define BED_MINTEMP        0
+#define CHAMBER_MINTEMP    0
 
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
@@ -1575,7 +1575,7 @@
  * Commands to execute at the end of G29 probing.
  * Useful to retract or move the Z probe out of the way.
  */
-//#define Z_PROBE_END_SCRIPT "G1 Z10 F12000\nG1 X15 Y330\nG1 Z0.5\nG1 Z10"
+#define Z_PROBE_END_SCRIPT "G27"
 
 // @section homing
 
@@ -1727,6 +1727,24 @@
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
+#define PREHEAT_3_LABEL       "ABS"
+#define PREHEAT_3_TEMP_HOTEND 250
+#define PREHEAT_3_TEMP_BED    100
+#define PREHEAT_3_TEMP_CHAMBER 35
+#define PREHEAT_3_FAN_SPEED     0 // Value from 0 to 255
+
+#define PREHEAT_4_LABEL       "ASA"
+#define PREHEAT_4_TEMP_HOTEND 240
+#define PREHEAT_4_TEMP_BED     90
+#define PREHEAT_4_TEMP_CHAMBER 35
+#define PREHEAT_4_FAN_SPEED     0 // Value from 0 to 255
+
+#define PREHEAT_5_LABEL       "PVA"
+#define PREHEAT_5_TEMP_HOTEND 215
+#define PREHEAT_5_TEMP_BED     60
+#define PREHEAT_5_TEMP_CHAMBER 35
+#define PREHEAT_5_FAN_SPEED     0 // Value from 0 to 255
+
 /**
  * Nozzle Park
  *
@@ -1746,8 +1764,8 @@
   //#define NOZZLE_PARK_X_ONLY          // X move only is required to park
   //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
   #define NOZZLE_PARK_Z_RAISE_MIN   2   // (mm) Always raise Z by at least this distance
-  #define NOZZLE_PARK_XY_FEEDRATE 100   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
-  #define NOZZLE_PARK_Z_FEEDRATE    5   // (mm/s) Z axis feedrate (not used for delta printers)
+  #define NOZZLE_PARK_XY_FEEDRATE   40   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
+  #define NOZZLE_PARK_Z_FEEDRATE    10   // (mm/s) Z axis feedrate (not used for delta printers)
 #endif
 
 /**
@@ -2016,7 +2034,7 @@
 //
 // Add individual axis homing items (Home X, Home Y, and Home Z) to the LCD menu.
 //
-//#define INDIVIDUAL_AXIS_HOMING_MENU
+#define INDIVIDUAL_AXIS_HOMING_MENU
 
 //
 // SPEAKER/BUZZER

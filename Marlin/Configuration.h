@@ -150,7 +150,7 @@
 
 // This defines the number of extruders
 // :[0, 1, 2, 3, 4, 5, 6, 7, 8]
-//#define EXTRUDERS 1
+#define EXTRUDERS 1
 
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
@@ -163,7 +163,6 @@
 #if ENABLED(SINGLENOZZLE)
   #define SINGLENOZZLE_STANDBY_TEMP
   #define SINGLENOZZLE_STANDBY_FAN
-  #define EXTRUDERS 3
 #endif
 
 /**
@@ -295,9 +294,7 @@
  *   - This implementation supports up to two mixing extruders.
  *   - Enable DIRECT_MIXING_IN_G1 for M165 and mixing in G1 (from Pia Taubert's reference implementation).
  */
-#if DISABLED (SINGLENOZZLE)
 #define MIXING_EXTRUDER
-#define EXTRUDERS 1
 #if ENABLED(MIXING_EXTRUDER)
   #define MIXING_STEPPERS 2        // Number of steppers in your mixing extruder
   #define MIXING_VIRTUAL_TOOLS 16  // Use the Virtual Tool method with M163 and M164
@@ -307,7 +304,6 @@
   #if ENABLED(GRADIENT_MIX)
     #define GRADIENT_VTOOL         // Add M166 T to use a V-tool index as a Gradient alias
   #endif
-#endif
 #endif
 
 // Offset of the extruders (uncomment if using more than one and relying on firmware to position when changing).
@@ -1453,7 +1449,7 @@
    */
   #define G26_MESH_VALIDATION
   #if ENABLED(G26_MESH_VALIDATION)
-    #define MESH_TEST_NOZZLE_SIZE   1.0    // (mm) Diameter of primary nozzle.
+    #define MESH_TEST_NOZZLE_SIZE   0.4    // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT  0.2    // (mm) Default layer height for G26.
     #define MESH_TEST_HOTEND_TEMP   250    // (°C) Default nozzle temperature for G26.
     #define MESH_TEST_BED_TEMP       70    // (°C) Default bed temperature for G26.

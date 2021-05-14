@@ -1447,7 +1447,7 @@
    */
   #define G26_MESH_VALIDATION
   #if ENABLED(G26_MESH_VALIDATION)
-    #define MESH_TEST_NOZZLE_SIZE   1.0    // (mm) Diameter of primary nozzle.
+    #define MESH_TEST_NOZZLE_SIZE   1.8    // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT  0.2    // (mm) Default layer height for G26.
     #define MESH_TEST_HOTEND_TEMP   250    // (°C) Default nozzle temperature for G26.
     #define MESH_TEST_BED_TEMP       70    // (°C) Default bed temperature for G26.

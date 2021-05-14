@@ -306,7 +306,6 @@
     #define GRADIENT_VTOOL         // Add M166 T to use a V-tool index as a Gradient alias
   #endif
 #endif
-#endif
 
 // Offset of the extruders (uncomment if using more than one and relying on firmware to position when changing).
 // The offset has to be X=0, Y=0 for the extruder 0 hotend (default extruder).

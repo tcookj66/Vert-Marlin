@@ -878,7 +878,8 @@
 //
 // Add the G35 command to read bed corners to help adjust screws. Requires a bed probe.
 //
-#define ASSISTED_TRAMMING
+#if HAS_BED_PROBE
+  #define ASSISTED_TRAMMING
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probe points.
@@ -905,6 +906,7 @@
    */
   #define TRAMMING_SCREW_THREAD 30
 
+#endif
 #endif
 
 // @section motion

@@ -1145,7 +1145,9 @@
 #define Z_PROBE_OFFSET_RANGE_MAX 5
 
 // Enable the M48 repeatability test to test probe accuracy
-#define Z_MIN_PROBE_REPEATABILITY_TEST
+#if ANY(USE_PROBE_FOR_Z_HOMING, Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN)
+  #define Z_MIN_PROBE_REPEATABILITY_TEST //diagnostic tool to check probe functions
+#endif
 
 // Before deploy/stow pause for user confirmation
 //#define PAUSE_BEFORE_DEPLOY_STOW

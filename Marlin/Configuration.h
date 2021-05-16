@@ -1146,7 +1146,7 @@
 #define Z_PROBE_OFFSET_RANGE_MAX 5
 
 // Enable the M48 repeatability test to test probe accuracy
-#if ANY(USE_PROBE_FOR_Z_HOMING, Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN)
+#if ANY(BLTOUCH, FIX_MOUNTED_PROBE)
   #define Z_MIN_PROBE_REPEATABILITY_TEST //diagnostic tool to check probe functions
 #endif
 

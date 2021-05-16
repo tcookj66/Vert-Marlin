@@ -1144,7 +1144,9 @@
 #define Z_PROBE_OFFSET_RANGE_MAX 5
 
 // Enable the M48 repeatability test to test probe accuracy
-#define Z_MIN_PROBE_REPEATABILITY_TEST //diagnostic tool to check probe functions
+#if ANY(USE_PROBE_FOR_Z_HOMING, Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN)
+  #define Z_MIN_PROBE_REPEATABILITY_TEST //diagnostic tool to check probe functions
+#endif
 
 // Before deploy/stow pause for user confirmation
 //#define PAUSE_BEFORE_DEPLOY_STOW
@@ -1595,7 +1597,6 @@
 // - Prevent Z homing when the Z probe is outside bed area.
 //
 #define Z_SAFE_HOMING
-
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
   #define Z_SAFE_HOMING_Y_POINT Y_CENTER  // Y point for Z homing

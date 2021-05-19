@@ -23,7 +23,6 @@
 //
 // Advanced Settings Menus
 //
-
 #include "../../inc/MarlinConfigPre.h"
 
 #if HAS_LCD_MENU
@@ -53,6 +52,10 @@
 
 #if ENABLED(PASSWORD_FEATURE)
   #include "../../feature/password/password.h"
+#endif
+
+#if ENABLED(BUILD_VOLUME_WIZARD)
+  #include "../../gcode/gcode.h"
 #endif
 
 void menu_tmc();
@@ -650,11 +653,15 @@ void menu_advanced_settings() {
   /**
    * Build Volume Wizard - Guide user to find the proper build volume settings
    */
+  #if ENABLED(BUILD_VOLUME_WIZARD)
   void _lcd_build_volume_wizard_min() {
-    sprintf_P(ubl_lcd_gcode, PSTR("M1005L"));
+    char bvw_gcode[30];
+    sprintf_P(bvw_gcode, PSTR("M1005L"));
+  }
 
-  void _lcd_build_volume_wizard_max() {
-    sprintf_P(ubl_lcd_gcode, PSTR("M1005H"));
+  void _lcd_build_volume_wizard_max(){
+    char bvw_gcode[30];
+    sprintf_P(bvw_gcode, PSTR("M1005H"));
   }
 
   void GcodeSuite::M1005() {
@@ -662,25 +669,33 @@ void menu_advanced_settings() {
     if (parser.seenval('L')) {
     char bvw_gcode[30];
 
-    sprintf_P(lcd_gcode, PSTR("G28\nG1X0Y0"));
+    sprintf_P(bvw_gcode, PSTR("G28\nG1X0Y0\nM211S0"));
 
-    #if USE_XMIN_PLUG && USE_YMIN_PLUG
-      sprintf_P(lcd_gcode, PSTR("M117 "));
+    #if ENABLED(USE_XMIN_PLUG) && ENABLED(USE_YMIN_PLUG)
+      #if HAS_STATUS_MESSAGE
+        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
+      #endif
       SERIAL_ECHOLNPGM("");
     #endif
 
-    #if USE_XMAX_PLUG && USE_YMAX_PLUG
-      sprintf_P(lcd_gcode, PSTR("M117 "));
+    #if ENABLED(USE_XMAX_PLUG) && ENABLED(USE_YMAX_PLUG)
+      #if HAS_STATUS_MESSAGE
+        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
+      #endif
        SERIAL_ECHOLNPGM("");
     #endif
 
-    #if USE_XMIN_PLUG && USE_YMAX_PLUG
-      sprintf_P(lcd_gcode, PSTR("M117 "));
-       SERIAL_ECHOLNPGM("");
+    #if ENABLED(USE_XMIN_PLUG) && ENABLED(USE_YMAX_PLUG)
+      #if HAS_STATUS_MESSAGE
+        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
+      #endif
+      SERIAL_ECHOLNPGM("");
     #endif
 
-    #if USE_XMAX_PLUG && USE_YMIN_PLUG
-      sprintf_P(lcd_gcode, PSTR("M117 "));
+    #if ENABLED(USE_XMAX_PLUG) && ENABLED(USE_YMIN_PLUG)
+      #if HAS_STATUS_MESSAGE
+        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
+      #endif
       SERIAL_ECHOLNPGM("");
     #endif
 
@@ -690,25 +705,33 @@ void menu_advanced_settings() {
     if (parser.seenval('H')) {
     char bvw_gcode[30];
 
-    sprintf_P(lcd_gcode, PSTR("G28\nG1X%iY%i") X_BED_SIZE, Y_BED_SIZE);
+    sprintf_P(bvw_gcode, PSTR("G28\nG1X%iY%i\nM211S0"), X_MAX_POS, Y_MAX_POS);
 
-    #if USE_XMIN_PLUG && USE_YMIN_PLUG
-      sprintf_P(lcd_gcode, PSTR("M117 "));
+    #if ENABLED(USE_XMIN_PLUG) && ENABLED(USE_YMIN_PLUG)
+      #if HAS_STATUS_MESSAGE
+        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
+      #endif
       SERIAL_ECHOLNPGM("");
     #endif
 
-    #if USE_XMAX_PLUG && USE_YMAX_PLUG
-      sprintf_P(lcd_gcode, PSTR("M117 "));
+    #if ENABLED(USE_XMAX_PLUG) && ENABLED(USE_YMAX_PLUG)
+      #if HAS_STATUS_MESSAGE
+        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
+      #endif
       SERIAL_ECHOLNPGM("");
     #endif
 
-    #if USE_XMIN_PLUG && USE_YMAX_PLUG
-      sprintf_P(lcd_gcode, PSTR("M117 "));
+    #if ENABLED(USE_XMIN_PLUG) && ENABLED(USE_YMAX_PLUG)
+      #if HAS_STATUS_MESSAGE
+        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
+      #endif
       SERIAL_ECHOLNPGM("");
     #endif
 
-    #if USE_XMAX_PLUG && USE_YMIN_PLUG
-      sprintf_P(lcd_gcode, PSTR("M117 "));
+    #if ENABLED(USE_XMAX_PLUG) && ENABLED(USE_YMIN_PLUG)
+      #if HAS_STATUS_MESSAGE
+        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
+      #endif
       SERIAL_ECHOLNPGM("");
     #endif
 
@@ -719,7 +742,7 @@ void menu_advanced_settings() {
 
   void _menu_build_volume_wizard() {
     START_MENU();
-    BACK_ITEM(MSG_CONFIGURATION)
+    BACK_ITEM(MSG_CONFIGURATION);
 
     ACTION_ITEM(MSG_BUILD_VOLUME_WIZARD_MIN_XY, _lcd_build_volume_wizard_min);
 
@@ -728,5 +751,6 @@ void menu_advanced_settings() {
     ACTION_ITEM(MSG_INFO_SCREEN, ui.return_to_status);
     END_MENU();
   }
+#endif
 
 #endif // HAS_LCD_MENU

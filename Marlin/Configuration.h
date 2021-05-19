@@ -2037,7 +2037,7 @@
 //
 // Note: Usually sold with a white PCB.
 //
-//#define REPRAP_DISCOUNT_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_SMART_CONTROLLER //disable after BVW development
 
 //
 // GT2560 (YHCB2004) LCD Display

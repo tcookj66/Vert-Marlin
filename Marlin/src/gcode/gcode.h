@@ -1088,6 +1088,10 @@ private:
     static void M1004();
   #endif
 
+  #if ENABLED(BUILD_VOLUME_WIZARD)
+    static void M1005();
+  #endif
+
   #if ENABLED(MAX7219_GCODE)
     static void M7219();
   #endif

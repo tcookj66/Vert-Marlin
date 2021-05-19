@@ -714,11 +714,8 @@ void menu_advanced_settings() {
 
     queue.inject(bvw_gcode);
       }
-    #endif
-
   }
 
-#endif
 
   void _menu_build_volume_wizard() {
     START_MENU();

@@ -138,6 +138,8 @@ namespace Language_en {
   PROGMEM Language_Str MSG_LEVEL_CORNERS_IN_RANGE          = _UxGT("All Corners Within Tolerance. Level Bed");
   PROGMEM Language_Str MSG_LEVEL_CORNERS_GOOD_POINTS       = _UxGT("Good Points: ");
   PROGMEM Language_Str MSG_LEVEL_CORNERS_LAST_Z            = _UxGT("Last Z: ");
+  PROGMEM Language_Str MSG_BUILD_VOLUME_WIZARD_MIN_XY      = _UxGT("Find Min XY ");
+  PROGMEM Language_Str MSG_BUILD_VOLUME_WIZARD_MAX_XY      = _UxGT("Find Max XY ");
   PROGMEM Language_Str MSG_NEXT_CORNER                     = _UxGT("Next Corner");
   PROGMEM Language_Str MSG_MESH_EDITOR                     = _UxGT("Mesh Editor");
   PROGMEM Language_Str MSG_EDIT_MESH                       = _UxGT("Edit Mesh");

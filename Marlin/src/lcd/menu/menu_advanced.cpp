@@ -647,4 +647,49 @@ void menu_advanced_settings() {
   END_MENU();
 }
 
+  /**
+   * Build Volume Wizard - Guide user to find the proper build volume settings
+   */
+  void _lcd_build_volume_wizard_min() {
+    char ubl_lcd_gcode[30];
+    #if IS_FULL_CARTESIAN
+      sprintf_P(lcd_gcode, PSTR("G28\nG1X0Y0"));
+    #elif IS-CORE
+
+    #elif IS_DELTA
+
+    #elif IS_SCARA
+
+    #endif
+
+    queue.inject(lcd_gcode);
+  }
+
+  void _lcd_build_volume_wizard_max() {
+    char ubl_lcd_gcode[30];
+    #if IS_FULL_CARTESIAN
+      sprintf_P(lcd_gcode, PSTR("G28\nG1X%iY%i") X_BED_SIZE, Y_BED_SIZE);
+    #elif IS-CORE
+
+    #elif IS_DELTA
+
+    #elif IS_SCARA
+
+    #endif
+
+    queue.inject(lcd_gcode);
+  }
+
+  void _menu_build_volume_wizard() {
+    START_MENU();
+    BACK_ITEM(MSG_CONFIGURATION)
+
+    ACTION_ITEM(MSG_BUILD_VOLUME_WIZARD_MIN_XY, _lcd_build_volume_wizard_min);
+
+    ACTION_ITEM(MSG_BUILD_VOLUME_WIZARD_MAX_XY, _lcd_build_volume_wizard_max);
+
+    ACTION_ITEM(MSG_INFO_SCREEN, ui.return_to_status);
+    END_MENU();
+  }
+
 #endif // HAS_LCD_MENU

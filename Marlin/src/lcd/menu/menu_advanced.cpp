@@ -669,7 +669,7 @@ void menu_advanced_settings() {
     if (parser.seenval('L')) {
     char bvw_gcode[30];
 
-    sprintf_P(bvw_gcode, PSTR("G28\nG1X0Y0\nM211S0"));
+    sprintf_P(bvw_gcode, PSTR("G28\nG0X0Y0\nM211S0"));
 
     #if ENABLED(USE_XMIN_PLUG) && ENABLED(USE_YMIN_PLUG)
       #if HAS_STATUS_MESSAGE
@@ -705,7 +705,7 @@ void menu_advanced_settings() {
     if (parser.seenval('H')) {
     char bvw_gcode[30];
 
-    sprintf_P(bvw_gcode, PSTR("G28\nG1X%iY%i\nM211S0"), X_MAX_POS, Y_MAX_POS);
+    sprintf_P(bvw_gcode, PSTR("G28\nG0X%iY%i\nM211S0"), X_MAX_POS, Y_MAX_POS);
 
     #if ENABLED(USE_XMIN_PLUG) && ENABLED(USE_YMIN_PLUG)
       #if HAS_STATUS_MESSAGE

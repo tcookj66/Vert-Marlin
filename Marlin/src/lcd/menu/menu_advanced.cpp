@@ -669,7 +669,7 @@ void menu_advanced_settings() {
     if (parser.seenval('L')) {
     char bvw_gcode[30];
 
-    sprintf_P(bvw_gcode, PSTR("G28\nG0X0Y0\nM211S0"));
+    sprintf_P(bvw_gcode, PSTR("G28\nG0X0Y0"));
 
     #if ENABLED(USE_XMIN_PLUG) && ENABLED(USE_YMIN_PLUG)
       #if HAS_STATUS_MESSAGE
@@ -705,7 +705,7 @@ void menu_advanced_settings() {
     if (parser.seenval('H')) {
     char bvw_gcode[30];
 
-    sprintf_P(bvw_gcode, PSTR("G28\nG0X%iY%i\nM211S0"), X_MAX_POS, Y_MAX_POS);
+    sprintf_P(bvw_gcode, PSTR("G28\nG0X%iY%i"), X_MAX_POS, Y_MAX_POS);
 
     #if ENABLED(USE_XMIN_PLUG) && ENABLED(USE_YMIN_PLUG)
       #if HAS_STATUS_MESSAGE
@@ -743,6 +743,10 @@ void menu_advanced_settings() {
   void _menu_build_volume_wizard() {
     START_MENU();
     BACK_ITEM(MSG_CONFIGURATION);
+
+    #if ENABLED(HAS_SOFTWARE_ENDSTOPS)
+    EDIT_ITEM(bool, MSG_LCD_SOFT_ENDSTOPS, &soft_endstop._enabled);
+    #endif
 
     ACTION_ITEM(MSG_BUILD_VOLUME_WIZARD_MIN_XY, _lcd_build_volume_wizard_min);
 

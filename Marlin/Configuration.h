@@ -2082,7 +2082,7 @@
  * SD Card support is disabled by default. If your controller has an SD slot,
  * you must uncomment the following option or it won't work.
  */
-//#define SDSUPPORT // i use octoprint so no need for this
+#define SDSUPPORT // i use octoprint so no need for this
 
 /**
  * SD CARD: ENABLE CRC

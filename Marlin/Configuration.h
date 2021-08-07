@@ -141,7 +141,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_GT2560_V3_A20
+  #define MOTHERBOARD BOARD_GT2560_V3
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu

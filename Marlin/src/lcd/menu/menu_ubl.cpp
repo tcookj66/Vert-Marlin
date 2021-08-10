@@ -622,7 +622,7 @@ void _menu_ubl_tools() {
   }
 
   void _menu_ubl_mesh_wizard() {
-    const int16_t total_slots = settings.calc_num_meshes();
+    int16_t a = settings.calc_num_meshes();
     START_MENU();
     BACK_ITEM(MSG_UBL_LEVEL_BED);
 
@@ -634,7 +634,7 @@ void _menu_ubl_tools() {
       EDIT_ITEM(int3, MSG_UBL_BED_TEMP_CUSTOM, &custom_bed_temp, BED_MINTEMP + 20, BED_MAX_TARGET);
     #endif
 
-    EDIT_ITEM(int3, MSG_UBL_STORAGE_SLOT, &ubl_storage_slot, 0, total_slots);
+    EDIT_ITEM(int3, MSG_UBL_STORAGE_SLOT, &ubl_storage_slot, 0, a - 1);
 
     ACTION_ITEM(MSG_UBL_MESH_WIZARD, _lcd_ubl_mesh_wizard);
 

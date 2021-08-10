@@ -41,7 +41,6 @@ static int16_t ubl_storage_slot = 0,
                side_points = 3,
                ubl_fillin_amount = 5,
                ubl_height_amount = 1;
-int16_t ubl_storage_slot_umw = 0;
 
 static uint8_t n_edit_pts = 1;
 static int8_t x_plot = 0, y_plot = 0; // May be negative during move
@@ -610,13 +609,13 @@ void _menu_ubl_tools() {
    * UBL Mesh Wizard - One-click mesh creation with or without a probe
    */
   void _lcd_ubl_mesh_wizard() {
-    char ubl_lcd_gcode[30];
+    char ubl_lcd_gcode[32];
     #if HAS_HEATED_BED && HAS_HOTEND
-      sprintf_P(ubl_lcd_gcode, PSTR("M1004B%iH%iS%i"), custom_bed_temp, custom_hotend_temp, ubl_storage_slot_umw);
+      sprintf_P(ubl_lcd_gcode, PSTR("M1004 B%i H%i S%i"), custom_bed_temp, custom_hotend_temp, ubl_storage_slot);
     #elif HAS_HOTEND
-      sprintf_P(ubl_lcd_gcode, PSTR("M1004H%iS%i"), custom_hotend_temp, ubl_storage_slot_umw);
+      sprintf_P(ubl_lcd_gcode, PSTR("M1004 H%i S%i"), custom_hotend_temp, ubl_storage_slot);
     #else
-      sprintf_P(ubl_lcd_gcode, PSTR("M1004S%i"), ubl_storage_slot_umw);
+      sprintf_P(ubl_lcd_gcode, PSTR("M1004 S%i"), ubl_storage_slot);
     #endif
     queue.inject(ubl_lcd_gcode);
     ui.return_to_status();
@@ -635,7 +634,7 @@ void _menu_ubl_tools() {
       EDIT_ITEM(int3, MSG_UBL_BED_TEMP_CUSTOM, &custom_bed_temp, BED_MINTEMP + 20, BED_MAX_TARGET);
     #endif
 
-    EDIT_ITEM(int3, MSG_UBL_STORAGE_SLOT, &ubl_storage_slot_umw, 0, a - 1);
+    EDIT_ITEM(int3, MSG_UBL_STORAGE_SLOT, &ubl_storage_slot, 0, a - 1);
 
     ACTION_ITEM(MSG_UBL_MESH_WIZARD, _lcd_ubl_mesh_wizard);
 

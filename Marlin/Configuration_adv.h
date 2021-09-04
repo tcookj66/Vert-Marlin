@@ -3791,8 +3791,8 @@
     #define BUTTON1_PULLUP        true
     #define BUTTON1_HIT_STATE     LOW
     #define BUTTON1_WHEN_PRINTING true
-    #define BUTTON1_GCODE         "M24"
-    #define BUTTON1_DESC          "Start/Pause sd print"
+    #define BUTTON1_GCODE         "M35"
+    #define BUTTON1_DESC          "Start/Pause print"
   #endif
 
   #define BUTTON2_PIN BUTTON2

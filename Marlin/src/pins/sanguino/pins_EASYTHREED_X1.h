@@ -41,20 +41,6 @@
 #define LED3 11
 #define LED4 10
 
-/*
-#define START_PIN 27
-#define LED_START 10
-
-#define PLUS_PIN 28
-#define LED_PLUS 11
-
-#define MINUS_PIN 29
-#define LED_MINUS 16
-
-#define HOME_PIN 30
-#define LED_HOME 17
-*/
-
 #define X_STEP_PIN 15
 #define X_DIR_PIN 21
 #define X_STOP_PIN 18
@@ -74,8 +60,8 @@
 
 #define HEATER_0_PIN 13
 
-// #define HEATER_BED_PIN 12
-// #define TEMP_BED_PIN 6
+#define HEATER_BED_PIN 12
+#define TEMP_BED_PIN 6
 #define X_ENABLE_PIN 14
 #define Y_ENABLE_PIN 14
 #define Z_ENABLE_PIN 26

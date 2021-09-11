@@ -216,7 +216,7 @@
     #error "ANET_FULL_GRAPHICS_LCD_ALT_WIRING only applies to the ANET 1.0 board."
 
   #elif ENABLED(ANET_FULL_GRAPHICS_LCD)
-    #error "CAUTION! ANET_FULL_GRAPHICS_LCD requires wiring modifications. See 'pins_BTT_SKR_V1_3.h' for details. Comment out this line to continue."
+    //#error "CAUTION! ANET_FULL_GRAPHICS_LCD requires wiring modifications. See 'pins_BTT_SKR_V1_3.h' for details. Comment out this line to continue."
 
    /**
     * 1. Cut the tab off the LCD connector so it can be plugged into the "EXP1" connector the other way.

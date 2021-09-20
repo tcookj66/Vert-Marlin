@@ -22,13 +22,12 @@
 #pragma once
 
 /**
- * BigTreeTech SKR 1.4 Turbo pin assignments
+ * polargraph.h - Polargraph-specific functions
  */
 
-#define BOARD_INFO_NAME "BTT SKR V1.4 TURBO"
+#include "../core/types.h"
+#include "../core/macros.h"
 
-//
-// Include SKR 1.4 pins
-//
-#define REQUIRE_LPC1769
-#include "../lpc1768/pins_BTT_SKR_V1_4.h"
+extern float segments_per_second;
+
+void inverse_kinematics(const xyz_pos_t &raw);

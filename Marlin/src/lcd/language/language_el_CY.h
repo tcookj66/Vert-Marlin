@@ -22,13 +22,17 @@
 #pragma once
 
 /**
- * BigTreeTech SKR 1.4 Turbo pin assignments
+ * Greek (Cyprus)
+ *
+ * LCD Menu Messages
+ * See also https://marlinfw.org/docs/development/lcd_language.html
  */
 
-#define BOARD_INFO_NAME "BTT SKR V1.4 TURBO"
+#include "language_el.h"
 
-//
-// Include SKR 1.4 pins
-//
-#define REQUIRE_LPC1769
-#include "../lpc1768/pins_BTT_SKR_V1_4.h"
+namespace Language_el_CY {
+  using namespace Language_el; // Inherit undefined strings from Greek (or English)
+
+  constexpr uint8_t CHARSIZE              = 2;
+  LSTR LANGUAGE                           = _UxGT("Greek (Cyprus)");
+}

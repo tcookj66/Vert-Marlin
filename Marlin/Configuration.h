@@ -22,7 +22,7 @@
 #pragma once
 
 #define CONFIG_EXAMPLES_DIR "Geeetech/A10"
-#define VERT_CUSTOM // enables my custom mods for my A10
+//#define VERT_CUSTOM // enables my custom mods for my A10
 
 /**
  * Configuration.h

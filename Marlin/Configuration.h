@@ -608,7 +608,8 @@
     #define  DEFAULT_Kp 32.03
     #define  DEFAULT_Ki 3.62
     #define  DEFAULT_Kd 70.85
-#endif // PIDTEMP
+  #endif // PIDTEMP
+#endif
 
 //===========================================================================
 //====================== PID > Bed Temperature Control ======================

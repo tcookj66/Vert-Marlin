@@ -87,6 +87,8 @@
   #define X_STOP_PIN                        PC1   // X-STOP
 #endif
 
+#define I_MIN_PIN                       PC2   // E0DET
+
 #ifdef Y_STALL_SENSITIVITY
   #define Y_STOP_PIN                  Y_DIAG_PIN
   #if Y_HOME_TO_MIN
@@ -190,11 +192,18 @@
   #define Z_CS_PIN                          PD0
 #endif
 
-#define E0_STEP_PIN                         PD15
-#define E0_DIR_PIN                          PD14
-#define E0_ENABLE_PIN                       PC7
-#ifndef E0_CS_PIN
-  #define E0_CS_PIN                         PC6
+//#define E0_STEP_PIN                         PD15
+//#define E0_DIR_PIN                          PD14
+//#define E0_ENABLE_PIN                       PC7
+//#ifndef E0_CS_PIN
+  //#define E0_CS_PIN                         PC6
+//#endif
+
+#define I_STEP_PIN                         PD15
+#define I_DIR_PIN                          PD14
+#define I_ENABLE_PIN                       PC7
+#ifndef I_CS_PIN
+  #define I_CS_PIN                         PC6
 #endif
 
 #define E1_STEP_PIN                         PD11

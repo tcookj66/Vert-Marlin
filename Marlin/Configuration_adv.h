@@ -1358,7 +1358,7 @@
   //#define LCD_DECIMAL_SMALL_XY
 
   // Add an 'M73' G-code to set the current percentage
-  #define LCD_SET_PROGRESS_MANUALLY
+  //#define LCD_SET_PROGRESS_MANUALLY
 
   // Show the E position (filament used) during printing
   //#define LCD_SHOW_E_TOTAL
@@ -1507,7 +1507,7 @@
   //#define UTF_FILENAME_SUPPORT
 
   // This allows hosts to request long names for files and folders with M33
-  #define LONG_FILENAME_HOST_SUPPORT
+  //#define LONG_FILENAME_HOST_SUPPORT
 
   // Enable this option to scroll long filenames in the SD card menu
   #define SCROLL_LONG_FILENAMES
@@ -1918,7 +1918,7 @@
  *
  * Warning: Does not respect endstops!
  */
-#define BABYSTEPPING
+//#define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
   //#define INTEGRATED_BABYSTEPPING         // EXPERIMENTAL integration of babystepping into the Stepper ISR
   //#define BABYSTEP_WITHOUT_HOMING
@@ -3915,8 +3915,8 @@
 #if ENABLED(HOST_ACTION_COMMANDS)
   #define HOST_PAUSE_M76
   #define HOST_PROMPT_SUPPORT
-  #define HOST_START_MENU_ITEM      // Add a menu item that tells the host to start
-  #define HOST_SHUTDOWN_MENU_ITEM   // Add a menu item that tells the host to shut down
+  //#define HOST_START_MENU_ITEM      // Add a menu item that tells the host to start
+  //#define HOST_SHUTDOWN_MENU_ITEM   // Add a menu item that tells the host to shut down
 #endif
 
 /**

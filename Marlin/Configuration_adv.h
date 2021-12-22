@@ -1033,7 +1033,7 @@
  * Set DISABLE_INACTIVE_? 'true' to shut down axis steppers after an idle period.
  * The Deactive Time can be overridden with M18 and M84. Set to 0 for No Timeout.
  */
-#define DEFAULT_STEPPER_DEACTIVE_TIME 120
+#define DEFAULT_STEPPER_DEACTIVE_TIME 0
 #define DISABLE_INACTIVE_X true
 #define DISABLE_INACTIVE_Y true
 #define DISABLE_INACTIVE_Z true // Set 'false' if the nozzle could fall onto your printed part!
@@ -1532,10 +1532,10 @@
 
 // Allow international symbols in long filenames. To display correctly, the
 // LCD's font must contain the characters. Check your selected LCD language.
-//#define UTF_FILENAME_SUPPORT
+#define UTF_FILENAME_SUPPORT
 
 // This allows hosts to request long names for files and folders with M33
-//#define LONG_FILENAME_HOST_SUPPORT
+#define LONG_FILENAME_HOST_SUPPORT
 
 // Enable this option to scroll long filenames in the SD card menu
 //#define SCROLL_LONG_FILENAMES
@@ -1624,10 +1624,10 @@
    * Use 'M503 C' to write the settings out to the SD Card as 'mc.zip'.
    * See docs/ConfigEmbedding.md for details on how to use 'mc-apply.py'.
    */
-  //#define CONFIGURATION_EMBEDDING
+  #define CONFIGURATION_EMBEDDING
 
   // Add an optimized binary file transfer mode, initiated with 'M28 B1'
-  //#define BINARY_FILE_TRANSFER
+  #define BINARY_FILE_TRANSFER
 
 /**
    * Set this option to one of the following (or the board's defaults apply):
@@ -2693,7 +2693,7 @@
 #define INTERPOLATE true
 
 #if AXIS_IS_TMC(X)
-#define X_CURRENT 564                 // (mA) RMS current. Multiply by 1.414 for peak current.
+#define X_CURRENT 800                 // (mA) RMS current. Multiply by 1.414 for peak current.
 #define X_CURRENT_HOME X_CURRENT      // (mA) RMS current for sensorless homing
 #define X_MICROSTEPS CUSTOM_MICROSTEP // 0..256
 #define X_RSENSE 0.11
@@ -2711,7 +2711,7 @@
 #endif
 
 #if AXIS_IS_TMC(Y)
-#define Y_CURRENT 564
+#define Y_CURRENT 800
 #define Y_CURRENT_HOME Y_CURRENT
 #define Y_MICROSTEPS CUSTOM_MICROSTEP
 #define Y_RSENSE 0.11
@@ -2729,7 +2729,7 @@
 #endif
 
 #if AXIS_IS_TMC(Z)
-#define Z_CURRENT 564
+#define Z_CURRENT 800
 #define Z_CURRENT_HOME Z_CURRENT
 #define Z_MICROSTEPS CUSTOM_MICROSTEP
 #define Z_RSENSE 0.11
@@ -2765,7 +2765,7 @@
 #endif
 
 #if AXIS_IS_TMC(I)
-#define I_CURRENT 800
+#define I_CURRENT 80
 #define I_CURRENT_HOME I_CURRENT
 #define I_MICROSTEPS 16
 #define I_RSENSE 0.11
@@ -2985,7 +2985,7 @@
    * M912 - Clear stepper driver overtemperature pre-warn condition flag.
    * M122 - Report driver parameters (Requires TMC_DEBUG)
    */
-//#define MONITOR_DRIVER_STATUS
+#define MONITOR_DRIVER_STATUS
 
 #if ENABLED(MONITOR_DRIVER_STATUS)
 #define CURRENT_STEP_DOWN 50 // [mA]
@@ -3789,14 +3789,14 @@
 #define FASTER_GCODE_PARSER
 
 #if ENABLED(FASTER_GCODE_PARSER)
-//#define GCODE_QUOTED_STRINGS  // Support for quoted string parameters
+  #define GCODE_QUOTED_STRINGS  // Support for quoted string parameters
 #endif
 
 // Support for MeatPack G-code compression (https://github.com/scottmudge/OctoPrint-MeatPack)
 //#define MEATPACK_ON_SERIAL_PORT_1
 //#define MEATPACK_ON_SERIAL_PORT_2
 
-//#define GCODE_CASE_INSENSITIVE  // Accept G-code sent to the firmware in lowercase
+  #define GCODE_CASE_INSENSITIVE  // Accept G-code sent to the firmware in lowercase
 
 //#define REPETIER_GCODE_M360     // Add commands originally from Repetier FW
 

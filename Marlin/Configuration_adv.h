@@ -1963,7 +1963,7 @@
 
   //#define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
   #if HAS_BED_PROBE
-    //#define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
+    #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
   #endif
 
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)

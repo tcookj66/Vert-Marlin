@@ -349,6 +349,10 @@
   #define WATCH_COOLER_TEMP_INCREASE            3 // Degrees Celsius
 #endif
 
+#if ANY(THERMAL_PROTECTION_HOTENDS, THERMAL_PROTECTION_BED, THERMAL_PROTECTION_CHAMBER, THERMAL_PROTECTION_COOLER)
+  #define THERMAL_PROTECTION_VARIANCE_MONITOR     // Detect a sensor malfunction preventing temperature updates
+#endif
+
 #if ENABLED(PIDTEMP)
 // Add an experimental additional term to the heater power, proportional to the extrusion speed.
 // A well-chosen Kc value should add just enough power to melt the increased material volume.
@@ -2986,23 +2990,26 @@
    * Define your own with:
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-#define CHOPPER_TIMING CHOPPER_DEFAULT_12V // All axes (override below)
-//#define CHOPPER_TIMING_X  CHOPPER_TIMING        // For X Axes (override below)
-//#define CHOPPER_TIMING_X2 CHOPPER_TIMING_X
-//#define CHOPPER_TIMING_Y  CHOPPER_TIMING        // For Y Axes (override below)
-//#define CHOPPER_TIMING_Y2 CHOPPER_TIMING_Y
-//#define CHOPPER_TIMING_Z  CHOPPER_TIMING        // For Z Axes (override below)
-//#define CHOPPER_TIMING_Z2 CHOPPER_TIMING_Z
-//#define CHOPPER_TIMING_Z3 CHOPPER_TIMING_Z
-//#define CHOPPER_TIMING_Z4 CHOPPER_TIMING_Z
-//#define CHOPPER_TIMING_E  CHOPPER_TIMING        // For Extruders (override below)
-//#define CHOPPER_TIMING_E1 CHOPPER_TIMING_E
-//#define CHOPPER_TIMING_E2 CHOPPER_TIMING_E
-//#define CHOPPER_TIMING_E3 CHOPPER_TIMING_E
-//#define CHOPPER_TIMING_E4 CHOPPER_TIMING_E
-//#define CHOPPER_TIMING_E5 CHOPPER_TIMING_E
-//#define CHOPPER_TIMING_E6 CHOPPER_TIMING_E
-//#define CHOPPER_TIMING_E7 CHOPPER_TIMING_E
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V        // All axes (override below)
+  //#define CHOPPER_TIMING_X  CHOPPER_TIMING        // For X Axes (override below)
+  //#define CHOPPER_TIMING_X2 CHOPPER_TIMING_X
+  //#define CHOPPER_TIMING_Y  CHOPPER_TIMING        // For Y Axes (override below)
+  //#define CHOPPER_TIMING_Y2 CHOPPER_TIMING_Y
+  //#define CHOPPER_TIMING_Z  CHOPPER_TIMING        // For Z Axes (override below)
+  //#define CHOPPER_TIMING_Z2 CHOPPER_TIMING_Z
+  //#define CHOPPER_TIMING_Z3 CHOPPER_TIMING_Z
+  //#define CHOPPER_TIMING_Z4 CHOPPER_TIMING_Z
+  //#define CHOPPER_TIMING_I  CHOPPER_TIMING
+  //#define CHOPPER_TIMING_J  CHOPPER_TIMING
+  //#define CHOPPER_TIMING_K  CHOPPER_TIMING
+  //#define CHOPPER_TIMING_E  CHOPPER_TIMING        // For Extruders (override below)
+  //#define CHOPPER_TIMING_E1 CHOPPER_TIMING_E
+  //#define CHOPPER_TIMING_E2 CHOPPER_TIMING_E
+  //#define CHOPPER_TIMING_E3 CHOPPER_TIMING_E
+  //#define CHOPPER_TIMING_E4 CHOPPER_TIMING_E
+  //#define CHOPPER_TIMING_E5 CHOPPER_TIMING_E
+  //#define CHOPPER_TIMING_E6 CHOPPER_TIMING_E
+  //#define CHOPPER_TIMING_E7 CHOPPER_TIMING_E
 
 /**
    * Monitor Trinamic drivers

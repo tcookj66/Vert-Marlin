@@ -1312,6 +1312,9 @@
     #endif
   #endif
 
+  // Build Volume Wizard - Guided build volume adjustment
+  #define BUILD_VOLUME_WIZARD
+
   // Include a page of printer information in the LCD Main Menu
   //#define LCD_INFO_MENU
   #if ENABLED(LCD_INFO_MENU)

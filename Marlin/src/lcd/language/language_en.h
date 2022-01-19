@@ -186,6 +186,8 @@ namespace Language_en {
   LSTR MSG_LCD_TILTING_MESH               = _UxGT("Tilting Point");
   LSTR MSG_UBL_MANUAL_MESH                = _UxGT("Manually Build Mesh");
   LSTR MSG_UBL_MESH_WIZARD                = _UxGT("UBL Mesh Wizard");
+  LSTR MSG_BUILD_VOLUME_WIZARD_MIN_XY     = _UxGT("BUILD VOLUME WIZARD MIN XY");
+  LSTR MSG_BUILD_VOLUME_WIZARD_MAX_XY     = _UxGT("BUILD VOLUME WIZARD MAX XY");
   LSTR MSG_UBL_BC_INSERT                  = _UxGT("Place Shim & Measure");
   LSTR MSG_UBL_BC_INSERT2                 = _UxGT("Measure");
   LSTR MSG_UBL_BC_REMOVE                  = _UxGT("Remove & Measure Bed");

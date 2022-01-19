@@ -23,7 +23,6 @@
 //
 // Advanced Settings Menus
 //
-
 #include "../../inc/MarlinConfigPre.h"
 
 #if HAS_LCD_MENU
@@ -53,6 +52,10 @@
 
 #if ENABLED(PASSWORD_FEATURE)
   #include "../../feature/password/password.h"
+#endif
+
+#if ENABLED(BUILD_VOLUME_WIZARD)
+  #include "../../gcode/gcode.h"
 #endif
 
 void menu_tmc();
@@ -652,5 +655,67 @@ void menu_advanced_settings() {
 
   END_MENU();
 }
+
+  /**
+   * Build Volume Wizard - Guide user to find the proper build volume settings
+   */
+  #if ENABLED(BUILD_VOLUME_WIZARD)
+  void _lcd_build_volume_wizard_min() {
+    char bvw_gcode[30];
+    sprintf_P(bvw_gcode, PSTR("M1005O"));
+  }
+
+  void _lcd_build_volume_wizard_max(){
+    char bvw_gcode[30];
+    sprintf_P(bvw_gcode, PSTR("M1005D"));
+  }
+
+  void GcodeSuite::M1005() {
+
+    if (parser.seenval('O')) { //Find XY0 Bed Edge Origin 
+    char bvw_gcode[30];
+
+    sprintf_P(bvw_gcode, PSTR("G28\nG0X0Y0)"));
+
+      #if HAS_STATUS_MESSAGE
+        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed edge noting differance add to #define X_MIN_POS & Y_MIN_POS"));
+      #endif
+      SERIAL_ECHOLNPGM("Align Align nozzle to bed edge noting differance add to #define X_MIN_POS & Y_MIN_POS");
+
+    queue.inject(bvw_gcode);
+  }
+
+    if (parser.seenval('D')) { //Find XY Bedsize Bed Edge Destination 
+    char bvw_gcode[30];
+
+    sprintf_P(bvw_gcode, PSTR("G28\nG0X%iY%i"), X_MAX_POS, Y_MAX_POS);
+
+      #if HAS_STATUS_MESSAGE
+        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed edge noting differance add to #define X_BED_SIZE & Y_BED_SIZE"));
+      #endif
+      SERIAL_ECHOLNPGM("Align nozzle to bed edge noting differance add to #define X_BED_SIZE & Y_BED_SIZE");
+
+    queue.inject(bvw_gcode);
+      }
+  
+  }
+
+
+  void _menu_build_volume_wizard() {
+    START_MENU();
+    BACK_ITEM(MSG_CONFIGURATION);
+
+    #if ENABLED(HAS_SOFTWARE_ENDSTOPS)
+    EDIT_ITEM(bool, MSG_LCD_SOFT_ENDSTOPS, &soft_endstop._enabled);
+    #endif
+
+    ACTION_ITEM(MSG_BUILD_VOLUME_WIZARD_MIN_XY, _lcd_build_volume_wizard_min);
+
+    ACTION_ITEM(MSG_BUILD_VOLUME_WIZARD_MAX_XY, _lcd_build_volume_wizard_max);
+
+    ACTION_ITEM(MSG_INFO_SCREEN, ui.return_to_status);
+    END_MENU();
+  }
+#endif
 
 #endif // HAS_LCD_MENU

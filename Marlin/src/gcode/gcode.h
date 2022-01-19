@@ -1207,6 +1207,10 @@ private:
     static void M1004();
   #endif
 
+  #if ENABLED(BUILD_VOLUME_WIZARD)
+    static void M1005();
+  #endif
+
   #if ENABLED(HAS_MCP3426_ADC)
     static void M3426();
   #endif

@@ -1584,7 +1584,7 @@ void MarlinSettings::postprocess() {
       #if ENABLED(EEPROM_INIT_NOW)
         uint32_t stored_hash;
         EEPROM_READ_ALWAYS(stored_hash);
-        if (stored_hash != build_hash) { EEPROM_FINISH(); return true; }
+        if (stored_hash != build_hash) { EEPROM_FINISH(); return false; }
       #endif
 
       uint16_t stored_crc;
@@ -1990,9 +1990,7 @@ void MarlinSettings::postprocess() {
         _FIELD_TEST(lcd_contrast);
         uint8_t lcd_contrast;
         EEPROM_READ(lcd_contrast);
-        if (!validating) {
-          TERN_(HAS_LCD_CONTRAST, ui.set_contrast(lcd_contrast));
-        }
+        TERN_(HAS_LCD_CONTRAST, if (!validating) ui.set_contrast(lcd_contrast));
       }
 
       //

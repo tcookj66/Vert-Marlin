@@ -662,87 +662,42 @@ void menu_advanced_settings() {
   #if ENABLED(BUILD_VOLUME_WIZARD)
   void _lcd_build_volume_wizard_min() {
     char bvw_gcode[30];
-    sprintf_P(bvw_gcode, PSTR("M1005L"));
+    sprintf_P(bvw_gcode, PSTR("M1005O"));
   }
 
   void _lcd_build_volume_wizard_max(){
     char bvw_gcode[30];
-    sprintf_P(bvw_gcode, PSTR("M1005H"));
+    sprintf_P(bvw_gcode, PSTR("M1005D"));
   }
 
   void GcodeSuite::M1005() {
 
-    if (parser.seenval('L')) {
+    if (parser.seenval('O')) { //Find XY0 Bed Edge Origin 
     char bvw_gcode[30];
 
-    sprintf_P(bvw_gcode, PSTR("G28\nG0X0Y0"));
+    sprintf_P(bvw_gcode, PSTR("G28\nG0X0Y0)"));
 
-    #if ENABLED(USE_XMIN_PLUG) && ENABLED(USE_YMIN_PLUG)
       #if HAS_STATUS_MESSAGE
-        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
+        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed edge noting differance add to #define X_MIN_POS & Y_MIN_POS"));
       #endif
-      SERIAL_ECHOLNPGM("");
-    #endif
-
-    #if ENABLED(USE_XMAX_PLUG) && ENABLED(USE_YMAX_PLUG)
-      #if HAS_STATUS_MESSAGE
-        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
-      #endif
-       SERIAL_ECHOLNPGM("");
-    #endif
-
-    #if ENABLED(USE_XMIN_PLUG) && ENABLED(USE_YMAX_PLUG)
-      #if HAS_STATUS_MESSAGE
-        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
-      #endif
-      SERIAL_ECHOLNPGM("");
-    #endif
-
-    #if ENABLED(USE_XMAX_PLUG) && ENABLED(USE_YMIN_PLUG)
-      #if HAS_STATUS_MESSAGE
-        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
-      #endif
-      SERIAL_ECHOLNPGM("");
-    #endif
+      SERIAL_ECHOLNPGM("Align Align nozzle to bed edge noting differance add to #define X_MIN_POS & Y_MIN_POS");
 
     queue.inject(bvw_gcode);
   }
 
-    if (parser.seenval('H')) {
+    if (parser.seenval('D')) { //Find XY Bedsize Bed Edge Destination 
     char bvw_gcode[30];
 
     sprintf_P(bvw_gcode, PSTR("G28\nG0X%iY%i"), X_MAX_POS, Y_MAX_POS);
 
-    #if ENABLED(USE_XMIN_PLUG) && ENABLED(USE_YMIN_PLUG)
       #if HAS_STATUS_MESSAGE
-        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
+        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed edge noting differance add to #define X_BED_SIZE & Y_BED_SIZE"));
       #endif
-      SERIAL_ECHOLNPGM("");
-    #endif
-
-    #if ENABLED(USE_XMAX_PLUG) && ENABLED(USE_YMAX_PLUG)
-      #if HAS_STATUS_MESSAGE
-        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
-      #endif
-      SERIAL_ECHOLNPGM("");
-    #endif
-
-    #if ENABLED(USE_XMIN_PLUG) && ENABLED(USE_YMAX_PLUG)
-      #if HAS_STATUS_MESSAGE
-        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
-      #endif
-      SERIAL_ECHOLNPGM("");
-    #endif
-
-    #if ENABLED(USE_XMAX_PLUG) && ENABLED(USE_YMIN_PLUG)
-      #if HAS_STATUS_MESSAGE
-        sprintf_P(bvw_gcode, PSTR("M117 Align nozzle to bed"));
-      #endif
-      SERIAL_ECHOLNPGM("");
-    #endif
+      SERIAL_ECHOLNPGM("Align nozzle to bed edge noting differance add to #define X_BED_SIZE & Y_BED_SIZE");
 
     queue.inject(bvw_gcode);
       }
+  
   }
 
 
